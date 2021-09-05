@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Image, View, FlatList, TouchableOpacity, Dimensions, ActivityIndicator } from "react-native"
 const { height } = Dimensions.get('window');
+import Lightbox from 'react-native-lightbox';
 
 
-export const Gallery = ({ navigator, activeIndex, images, loaderColor = "black", borderColor = "red" }) => {
+export const Gallery = ({ navigator, activeIndex, images, loaderColor = "black" , borderColor = "red" }) => {
     const [currIndex, setCurrentIndex] = useState(activeIndex);
     const [isLoading, setIsLoading] = useState(true);
     return (
@@ -12,26 +13,29 @@ export const Gallery = ({ navigator, activeIndex, images, loaderColor = "black",
                 isLoading && <ActivityIndicator color={loaderColor} />
             }
 
-            <Image
-                source={{ uri: images[currIndex].src }}
-                style={{
-                    width: '100%',
-                    height: height / 2.6,
-                    padding: normalize(5)
-                }}
-                resizeMode="contain"
-                onLoadEnd={() => {
-                    setIsLoading(false)
-                }}
-                onLoad={() => {
-                    setIsLoading(false);
-                }}
+            <Lightbox navigator={navigator}>
 
-                onLoadStart={() => {
-                    setIsLoading(true);
-                }}
-            />
+                <Image
+                    source={{ uri: images[currIndex].src }}
+                    style={{
+                        width: '100%',
+                        height: height / 2.6,
+                        padding: normalize(5)
+                    }}
+                    resizeMode="contain"
+                    onLoadEnd={() => {
+                        setIsLoading(false)
+                    }}
+                    onLoad={() => {
+                        setIsLoading(false);
+                    }}
 
+                    onLoadStart={() => {
+                        setIsLoading(true);
+                    }}
+                />
+
+            </Lightbox>
             <FlatList
                 data={images}
                 horizontal

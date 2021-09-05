@@ -1,9 +1,28 @@
 {
   "name": "react-native-gallery-view",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "React Native Gallery View",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Harikarthyk/react-native-gallery-view"
+  },
+  "keywords": [
+    "imageslider",
+    "flatlist",
+    "carousel",
+    "flatlist",
+    "react-native",
+    "react-component",
+    "gallery-view",
+    "Pinchtozoom"
+  ],
   "author": "Hari Karthyk (harikarthyk1407@gmail.com)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react-native-lightbox": "^0.8.1"
+  }
 }
