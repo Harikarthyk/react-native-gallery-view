@@ -18,11 +18,16 @@
     "react-native",
     "react-component",
     "gallery-view",
-    "Pinchtozoom"
+    "Pinchtozoom",
+    "lightbox"
   ],
   "author": "Hari Karthyk (harikarthyk1407@gmail.com)",
   "license": "ISC",
   "dependencies": {
     "react-native-lightbox": "^0.8.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Harikarthyk/react-native-gallery-view/issues"
+  },
+  "homepage": "https://github.com/Harikarthyk/react-native-gallery-view"
 }
