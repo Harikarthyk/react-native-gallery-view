@@ -1,0 +1,9 @@
+{
+  "name": "react-native-gallery-view",
+  "version": "1.0.0",
+  "description": "React Native Gallery View",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Hari Karthyk (harikarthyk1407@gmail.com)",
+  "license": "ISC"
+}
