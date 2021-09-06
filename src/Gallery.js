@@ -4,7 +4,21 @@ const { height } = Dimensions.get('window');
 import Lightbox from 'react-native-lightbox';
 
 
-export const Gallery = ({ navigator, activeIndex, images, loaderColor = "black" , borderColor = "red" }) => {
+export const Gallery = ({
+    navigator,
+    activeIndex,
+    images,
+    loaderColor = "black",
+    borderColor = "red",
+    thumbnailImageStyles = {
+        height: 80,
+        width: 80,
+        borderRadius: 15,
+    },
+    mainImageStyle = {
+        height: height / 2.6,
+    }
+}) => {
     const [currIndex, setCurrentIndex] = useState(activeIndex);
     const [isLoading, setIsLoading] = useState(true);
     return (
@@ -17,11 +31,13 @@ export const Gallery = ({ navigator, activeIndex, images, loaderColor = "black" 
 
                 <Image
                     source={{ uri: images[currIndex].src }}
-                    style={{
-                        width: '100%',
-                        height: height / 2.6,
-                        padding: normalize(5)
-                    }}
+                    style={[
+                        ...mainImageStyle,
+                        {
+                            width: '100%',
+                            padding: normalize(5)
+                        }
+                    ]}
                     resizeMode="contain"
                     onLoadEnd={() => {
                         setIsLoading(false)
@@ -59,16 +75,12 @@ export const Gallery = ({ navigator, activeIndex, images, loaderColor = "black" 
                             <Image
                                 resizeMode="contain"
                                 style={[
+                                    ...thumbnailImageStyles,
                                     currIndex === index && {
                                         borderColor: borderColor,
                                         borderWidth: 2,
                                     },
-                                    {
-                                        height: 80,
-                                        width: 80,
-                                        borderRadius: 15,
-
-                                    }]}
+                                ]}
                                 source={{ uri: item }}
                             />
                         </TouchableOpacity>
