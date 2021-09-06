@@ -6,7 +6,7 @@ import Lightbox from 'react-native-lightbox';
 
 export const Gallery = ({
     navigator,
-    activeIndex,
+    activeIndex = 0,
     images,
     loaderColor = "black",
     borderColor = "red",
@@ -32,10 +32,10 @@ export const Gallery = ({
                 <Image
                     source={{ uri: images[currIndex].src }}
                     style={[
-                        ...mainImageStyle,
+                        {...mainImageStyle},
                         {
                             width: '100%',
-                            padding: normalize(5)
+                            padding: 5
                         }
                     ]}
                     resizeMode="contain"
@@ -69,24 +69,24 @@ export const Gallery = ({
                             style={{
                                 marginRight: 10,
                             }}
-                            key={index}
+                            key={item.id}
 
                         >
                             <Image
                                 resizeMode="contain"
                                 style={[
-                                    ...thumbnailImageStyles,
+                                    {...thumbnailImageStyles},
                                     currIndex === index && {
                                         borderColor: borderColor,
                                         borderWidth: 2,
                                     },
                                 ]}
-                                source={{ uri: item }}
+                                source={{ uri: item.src }}
                             />
                         </TouchableOpacity>
                     )
                 }}
-                keyExtractor={item => item + new Date().toDateString()}
+                keyExtractor={item => item.id}
             />
         </View>
     )
