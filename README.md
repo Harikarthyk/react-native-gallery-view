@@ -61,11 +61,40 @@ export default App = ({ navigation, route, navigator}) => {
           activeIndex={0}
           navigator={navigator}
       />
+      
+      //Customization
+      <Gallery
+          thumbnailImageStyles = {
+            height: 80,
+            width: 80,
+            borderRadius: 15,
+          }
+          mainImageStyle = {
+             height: height / 2.6,
+          }
+          loaderColor = "black",
+          borderColor = "red",
+          images={images}
+          activeIndex={0}
+          navigator={navigator}
+      />
     </SafeAreaView>
   )
 }
   
 ```
+
+## list of available props for customization SliderBox:
+
+| Props  |  Value Type | Description |
+| :------------ |:---------------:| -----:|
+| loaderColor    | String Eg. "#000000" | Color for Lazy Loader in Main Image. default color is black  |
+| borderColor      | String Eg. "red"        |   border color for the active Thumbnail Image. Default is red |
+| thumbnailImageStyles | Object Eg. {height: 80 , width : 80}        |  Styling for the thumbnail images |
+| mainImageStyle | Object Eg. {height: 250 , width : "90%"}        |  Styling for the Main image |
+
+
+
 ## Author
 
 👤 **Hari Karthyk (harikarthyk1407@gmail.com)**
@@ -91,5 +120,3 @@ Give a ⭐️ if this project helped you!
 Copyright © 2021 [Hari Karthyk (harikarthyk1407@gmail.com)](https://github.com/HariKarthyk).<br />
 This project is [ISC](https://github.com/Harikarthyk/react-native-gallery-view/blob/master/LICENSE) licensed.
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
