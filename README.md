@@ -9,25 +9,62 @@
   <a href="https://github.com/Harikarthyk/react-native-gallery-view/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
-  <a href="https://github.com/Harikarthyk/react-native-gallery-view/blob/master/LICENSE" target="_blank">
-    <img alt="License: ISC" src="https://img.shields.io/github/license/HariKarthyk/react-native-gallery-view" />
-  </a>
+<!--   <a href="https://github.com/Harikarthyk/react-native-gallery-view/blob/master/LICENSE" target="_blank"> -->
+<!--     <img alt="License: ISC" src="https://img.shields.io/github/license/HariKarthyk/react-native-gallery-view" /> -->
+<!--   </a> -->
 </p>
 
-> Gallery View for Images in React Native
+> Gallery View for Images in React Native for both IOS and Android 
+
+<br>
+ 
+> Note : Install react-native-lightbox also
 
 ### 🏠 [Homepage](https://github.com/Harikarthyk/react-native-gallery-view)
 
 ## Install
 
 ```sh
-npm install
+npm install react-native-gallery-view
 ```
 
 ## Usage
 
-```sh
-npm install react-native-gallery-view
+```javascript
+
+import React,{useState} from 'react';
+import {SafeAreaView} from 'react-native';
+import { Gallery } from 'react-native-gallery-view';
+
+export default App = ({ navigation, route, navigator}) => {
+  const [images,setImages] = useState[{
+      src : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRpGmKrfBFE90_MyomlXre9OJhLyjMvfGm5w&usqp=CAU",
+      id: "12345" 
+    },{
+      src : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRpGmKrfBFE90_MyomlXre9OJhLyjMvfGm5w&usqp=CAU",
+      id: "12346"
+    },{
+     src : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRpGmKrfBFE90_MyomlXre9OJhLyjMvfGm5w&usqp=CAU",
+     id: "12347"
+  }];
+  
+  return(
+    <SafeAreaView
+      style={{
+        flex:1
+      }}
+    >
+       
+      // Basic useage
+      <Gallery
+          images={images}
+          activeIndex={0}
+          navigator={navigator}
+      />
+    </SafeAreaView>
+  )
+}
+  
 ```
 ## Author
 
