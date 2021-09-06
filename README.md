@@ -29,13 +29,6 @@ npm install
 ```sh
 npm install react-native-gallery-view
 ```
-
-## Run tests
-
-```sh
-npm run test
-```
-
 ## Author
 
 👤 **Hari Karthyk (harikarthyk1407@gmail.com)**
