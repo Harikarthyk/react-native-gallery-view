@@ -33,11 +33,11 @@ npm install react-native-gallery-view
 ```javascript
 
 import React,{useState} from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView,ScrolLView} from 'react-native';
 import { Gallery } from 'react-native-gallery-view';
 
 export default App = ({ navigation, route, navigator}) => {
-  const [images,setImages] = useState[{
+  const [images,setImages] = useState([{
       src : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRpGmKrfBFE90_MyomlXre9OJhLyjMvfGm5w&usqp=CAU",
       id: "12345" 
     },{
@@ -46,7 +46,7 @@ export default App = ({ navigation, route, navigator}) => {
     },{
      src : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRpGmKrfBFE90_MyomlXre9OJhLyjMvfGm5w&usqp=CAU",
      id: "12347"
-  }];
+  }]);
   
   return(
     <SafeAreaView
@@ -54,30 +54,29 @@ export default App = ({ navigation, route, navigator}) => {
         flex:1
       }}
     >
-       
-      // Basic useage
-      <Gallery
-          images={images}
-          activeIndex={0}
-          navigator={navigator}
-      />
-      
-      //Customization
-      <Gallery
-          thumbnailImageStyles = {
-            height: 80,
-            width: 80,
-            borderRadius: 15,
-          }
-          mainImageStyle = {
-             height: height / 2.6,
-          }
-          loaderColor = "black",
-          borderColor = "red",
-          images={images}
-          activeIndex={0}
-          navigator={navigator}
-      />
+      <ScrolLView>
+        <Gallery
+            images={images}
+            activeIndex={0}
+            navigator={navigator}
+        />
+
+        <Gallery
+            thumbnailImageStyles = {{
+              height: 80,
+              width: 80,
+              borderRadius: 15,
+            }}
+            mainImageStyle = {{
+               height: 200,
+            }}
+            loaderColor = "black"
+            borderColor = "red"
+            images={images}
+            activeIndex={0}
+            navigator={navigator}
+        />
+      </ScrollView>
     </SafeAreaView>
   )
 }
