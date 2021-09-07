@@ -33,7 +33,7 @@ npm install react-native-gallery-view
 ```javascript
 
 import React,{useState} from 'react';
-import {SafeAreaView,ScrolLView} from 'react-native';
+import {SafeAreaView,ScrollView} from 'react-native';
 import { Gallery } from 'react-native-gallery-view';
 
 export default App = ({ navigation, route, navigator}) => {
@@ -54,7 +54,7 @@ export default App = ({ navigation, route, navigator}) => {
         flex:1
       }}
     >
-      <ScrolLView>
+      <ScrollView>
         <Gallery
             images={images}
             activeIndex={0}
