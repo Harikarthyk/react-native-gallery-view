@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, View, FlatList, TouchableOpacity, Dimensions, ActivityIndicator } from "react-native"
+import { Image, View, FlatList, TouchableOpacity, Dimensions, ActivityIndicator, Text } from "react-native"
 const { height } = Dimensions.get('window');
 import Lightbox from 'react-native-lightbox';
 
@@ -17,41 +17,62 @@ export const Gallery = ({
     },
     mainImageStyle = {
         height: height / 2.6,
-    }
+    },
+    noImageFoundText = "No Image found"
 }) => {
     const [currIndex, setCurrentIndex] = useState(activeIndex);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     return (
         <View>
             {
                 isLoading && <ActivityIndicator color={loaderColor} />
             }
+            {images.length > 0 ?
 
-            <Lightbox navigator={navigator}>
+                <Lightbox navigator={navigator}>
 
-                <Image
-                    source={{ uri: images[currIndex].src }}
-                    style={[
-                        {...mainImageStyle},
-                        {
-                            width: '100%',
-                            padding: 5
-                        }
-                    ]}
-                    resizeMode="contain"
-                    onLoadEnd={() => {
-                        setIsLoading(false)
+                    <Image
+                        source={{ uri: images[currIndex].src }}
+                        style={[
+                            { ...mainImageStyle },
+                            {
+                                width: '100%',
+                                padding: 5
+                            }
+                        ]}
+                        resizeMode="contain"
+                        onLoadEnd={() => {
+                            setIsLoading(false)
+                        }}
+                        onLoad={() => {
+                            setIsLoading(false);
+                        }}
+
+                        onLoadStart={() => {
+                            setIsLoading(true);
+                        }}
+                    />
+
+                </Lightbox>
+                :
+                <View
+                    style={[{ ...mainImageStyle },
+                    {
+                        width: '100%',
+                        padding: 5,
+                        justifyContent: "center"
+                    }]}
+                >
+                    <Text
+                    style={{
+                        textAlign: "center",
+                        fontSize: 20
                     }}
-                    onLoad={() => {
-                        setIsLoading(false);
-                    }}
-
-                    onLoadStart={() => {
-                        setIsLoading(true);
-                    }}
-                />
-
-            </Lightbox>
+                    >
+                        {noImageFoundText}
+                    </Text>
+                </View>
+            }
             <FlatList
                 data={images}
                 horizontal
@@ -75,7 +96,7 @@ export const Gallery = ({
                             <Image
                                 resizeMode="contain"
                                 style={[
-                                    {...thumbnailImageStyles},
+                                    { ...thumbnailImageStyles },
                                     currIndex === index && {
                                         borderColor: borderColor,
                                         borderWidth: 2,
