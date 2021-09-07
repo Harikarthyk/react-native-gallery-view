@@ -36,7 +36,16 @@ import { SafeAreaView, ScrollView, Text } from 'react-native';
 import { Gallery } from 'react-native-gallery-view';
 
 export default App = ({ navigation, route, navigator }) => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([{
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRpGmKrfBFE90_MyomlXre9OJhLyjMvfGm5w&usqp=CAU",
+    id: "12345"
+  }, {
+    src: "https://st.depositphotos.com/1007995/1274/i/600/depositphotos_12746726-stock-photo-fashion-man-wearing- sunglasses-thinking.jpg",
+    id: "12346"
+  }, {
+    src: "https://i.pinimg.com/736x/36/fc/e9/36fce9ed325c3303d858b01257bd76c3.jpg",
+    id: "12347"
+  }]);
 
   return (
     <SafeAreaView
@@ -100,7 +109,11 @@ export default App = ({ navigation, route, navigator }) => {
 
 ```
 
-## list of available props for customization SliderBox:
+## Demo
+[![Watch the video](https://user-images.githubusercontent.com/54505967/132284459-d1768cc4-8d53-4e55-b855-5728a0c5ab5f.png)](https://user-images.githubusercontent.com/54505967/132284398-4b8edb26-5141-46ba-90c0-0fe8b76b9a0f.mp4)
+
+
+### list of available props for customization SliderBox:
 
 | Props  |  Value Type | Description |
 | :------------ |:---------------:| -----:|
@@ -108,6 +121,7 @@ export default App = ({ navigation, route, navigator }) => {
 | borderColor      | String Eg. "red"        |   border color for the active Thumbnail Image. Default is red |
 | thumbnailImageStyles | Object Eg. {height: 80 , width : 80}        |  Styling for the thumbnail images |
 | mainImageStyle | Object Eg. {height: 250 , width : "90%"}        |  Styling for the Main image |
+| noImageFoundText | String Eg. "No Images found"      |  Custom Text for Empty Images |
 
 
 
