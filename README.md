@@ -18,8 +18,6 @@
 
 <br>
  
-> Note : Install react-native-lightbox also
-
 ### 🏠 [Homepage](https://github.com/Harikarthyk/react-native-gallery-view)
 
 ## Install
