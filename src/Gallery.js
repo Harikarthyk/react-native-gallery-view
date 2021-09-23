@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image, View, FlatList, TouchableOpacity, Dimensions, ActivityIndicator, Text } from "react-native"
 const { height } = Dimensions.get('window');
-import Lightbox from 'react-native-lightbox';
+import Lightbox from 'react-native-lightbox-zoom';
 
 
 export const Gallery = ({
