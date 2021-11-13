@@ -24,8 +24,7 @@
   "author": "Hari Karthyk (harikarthyk1407@gmail.com)",
   "license": "ISC",
   "dependencies": {
-    "react-native-lightbox": "^0.8.1",
-    "react-native-lightbox-zoom": "^0.0.4"
+    "react-native-lightbox-v2": "^0.8.8"
   },
   "bugs": {
     "url": "https://github.com/Harikarthyk/react-native-gallery-view/issues"
