@@ -22,7 +22,7 @@ export const Gallery = ({
     },
     noImageFoundText = "No Image found"
 }) => {
-    const [currIndex, setCurrentIndex] = useState(activeIndex);
+    const [currIndex, setCurrentIndex] = useState(activeIndex || 0);
     const [isLoading, setIsLoading] = useState(false);
     const onSwipeLeft = () => {
         setCurrentIndex(currIndex === 0 ? images.length - 1 : currIndex - 1);
@@ -48,7 +48,7 @@ export const Gallery = ({
             {
                 isLoading && <ActivityIndicator color={loaderColor} />
             }
-            {images.length > 0 ?
+            {images?.length > 0 ?
                 <GestureRecognizer
                     onSwipeLeft={(state) => onSwipeRight()}
                     onSwipeRight={(state) => onSwipeLeft()}
@@ -64,7 +64,7 @@ export const Gallery = ({
                     <Lightbox navigator={navigator}>
 
                         <Image
-                            source={{ uri: images[currIndex].src }}
+                            source={{ uri: images[currIndex]?.src }}
                             style={[
                                 { ...mainImageStyle },
                                 {
@@ -126,7 +126,7 @@ export const Gallery = ({
                             style={{
                                 marginRight: 10,
                             }}
-                            key={item.id}
+                            key={item?.id}
 
                         >
                             <Image
@@ -138,12 +138,12 @@ export const Gallery = ({
                                         borderWidth: 2,
                                     },
                                 ]}
-                                source={{ uri: item.src }}
+                                source={{ uri: item?.src }}
                             />
                         </TouchableOpacity>
                     )
                 }}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item?.id}
             />
         </View>
     )
