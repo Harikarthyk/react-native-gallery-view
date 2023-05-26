@@ -127,7 +127,7 @@ export default App = ({ navigation, route, navigator }) => {
 
 👤 **Hari Karthyk (harikarthyk1407@gmail.com)**
 
-* Website: https://harikarthyk.xyz/
+* Website: https://harikarthyk.com/
 * Github: [@HariKarthyk](https://github.com/HariKarthyk)
 * LinkedIn: [@harikarthyk](https://linkedin.com/in/harikarthyk)
 
