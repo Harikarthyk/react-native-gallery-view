@@ -1,7 +1,7 @@
 {
   "name": "react-native-gallery-view",
-  "version": "3.1.1",
-  "description": "React Native Gallery View",
+  "version": "4.0.0",
+  "description": "React Native Image Swipeable Gallery View with Pinch to Zoom, Lightbox and Multiple Images",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,7 +24,9 @@
   "author": "Hari Karthyk (harikarthyk1407@gmail.com)",
   "license": "ISC",
   "dependencies": {
-    "react-native-lightbox-v2": "^0.8.8"
+    "react-native-fast-image": "^8.6.3",
+    "react-native-lightbox-v2": "^0.9.0",
+    "react-native-swipe-gestures": "^1.0.5"
   },
   "bugs": {
     "url": "https://github.com/Harikarthyk/react-native-gallery-view/issues"
