@@ -2,15 +2,12 @@ import React from 'react';
 import {
   View,
   Dimensions,
-  ActivityIndicator,
-  FlatList,
   Text,
-  TouchableOpacity,
   StyleSheet
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
-import Lightbox from 'react-native-lightbox-v2';
 import GestureRecognizer from 'react-native-swipe-gestures';
+import ActiveImage from './ActiveImage';
+import ThumbnailList from './ThumbnailList';
 
 const height = Dimensions.get("window").height;
 
@@ -47,10 +44,10 @@ const SwipeableFlatlist = ({
   },
   emptyImagePlaceHolderText = "No Images Found"
 }: SwipeableFlatlistProps): any => {
-  const swipeableHorizontalFlatListRef = React.useRef();
+  const swipeableHorizontalFlatListRef = React.useRef<any>();
 
-  const [currIndex, setCurrentIndex] = React.useState(activeIndex ?? 0);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [currIndex, setCurrentIndex] = React.useState<any>(activeIndex ?? 0);
+  const [isLoading, setIsLoading] = React.useState<any>(false);
 
   const onSwipeLeft = () => {
     setCurrentIndex(currIndex === 0 ? images.length - 1 : currIndex - 1);
@@ -76,85 +73,58 @@ const SwipeableFlatlist = ({
     setIsLoading(true);
   };
 
-  const renderItem = ({ item, index }) => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          setCurrentIndex(index);
-        }}
-        style={{
-          marginRight: 10,
-        }}
-        key={item?.id}
-      >
-        <FastImage
-          resizeMode="contain"
-          style={[
-            thumbnailImageStyles,
-            currIndex === index && {
-              borderColor: borderColor,
-              borderWidth: 2,
-            },
-          ]}
-          source={{ uri: item[imageUri] }}
-        />
-      </TouchableOpacity>
-    )
+  const updateCurrentIndex = (index: number) => {
+    setCurrentIndex(index);
   };
 
+
   return (
-    <View>
-      {
-        isLoading && <ActivityIndicator color={loaderColor} />
-      }
+    <View style={styles.rootContainer}>
       {
         images?.length > 0 ?
-        /* @ts-ignore */
-        <GestureRecognizer
-          onSwipeLeft={onSwipeRight}
-          onSwipeRight={onSwipeLeft}
-          config={{
-            velocityThreshold: 0.3,
-            directionalOffsetThreshold: 80
-          }}
-          style={styles.container}
-        >
-          <Lightbox navigator={navigator}>
-            <FastImage
-              source={{ uri: images[currIndex][imageUri] || '' }}
-              style={[
-                { ...mainImageStyle },
-                styles.activeImage
-              ]}
-              resizeMode="contain"
+          /* @ts-ignore */
+          <GestureRecognizer
+            onSwipeLeft={onSwipeRight}
+            onSwipeRight={onSwipeLeft}
+            config={{
+              velocityThreshold: 0.3,
+              directionalOffsetThreshold: 80
+            }}
+            style={styles.container}
+          >
+            {/* @ts-ignore */}
+            <ActiveImage
+              navigator={navigator}
+              images={images}
+              imageUri={imageUri}
+              mainImageStyle={mainImageStyle}
+              currIndex={currIndex}
               onLoadEnd={onLoadEnd}
               onLoad={onLoad}
-            />
 
-          </Lightbox>
-        </GestureRecognizer>
-        :
-        <View
-          style={[
-            mainImageStyle,
-            styles.emptyImagePlaceHolderContainer
-          ]}
-        >
-          <Text style={styles.emptyImagePlaceHolderText}>
-            {emptyImagePlaceHolderText}
-          </Text>
-        </View>
+            />
+          </GestureRecognizer>
+          :
+          <View
+            style={[
+              mainImageStyle,
+              styles.emptyImagePlaceHolderContainer
+            ]}
+          >
+            <Text style={styles.emptyImagePlaceHolderText}>
+              {emptyImagePlaceHolderText}
+            </Text>
+          </View>
       }
-      {/* @ts-ignore */}
-      <FlatList
+      <ThumbnailList
         ref={swipeableHorizontalFlatListRef}
-        data={images}
-        horizontal
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.flatlistContentContainerStyle}
-        showsHorizontalScrollIndicator={false}
-        renderItem={renderItem}
-        keyExtractor={item => item[imageKey]}
+        images={images}
+        imageKey={imageKey}
+        imageUri={imageUri}
+        currIndex={currIndex}
+        updateCurrentIndex={updateCurrentIndex}
+        borderColor={borderColor}
+        thumbnailImageStyles={thumbnailImageStyles}
       />
     </View>
   )
@@ -178,8 +148,7 @@ const styles = StyleSheet.create({
     padding: 5,
     justifyContent: "center"
   },
-  flatlistContentContainerStyle: {
-    marginVertical: 20
+  rootContainer: {
   }
 });
 
